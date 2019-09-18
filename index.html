@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <script src="worker_lib.js"></script>
+</head>
+<body>
+<script>
+    let work = new AsyncWorker({
+        sayHello: function(name) {
+        	alert("Hello", name);
+        	return true;
+		},
+        your_name: 'unknown'
+	});
+
+    console.debug("Worker:", work);
+
+    setTimeout(function() {
+    	work.sayHello("Jochen").then(function(result) {
+    		console.log("RESULT:", result);
+		});
+	}, 2000);
+</script>
+</body>
+</html>

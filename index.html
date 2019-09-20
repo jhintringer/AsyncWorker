@@ -8,20 +8,28 @@
 <body>
 <script>
     let work = new AsyncWorker({
-        sayHello: function(name) {
-        	alert("Hello", name);
+        sayHello: helloFunction,
+        changeNameTo: function(newName) {
+        	this.your_name = newName;
         	return true;
 		},
         your_name: 'unknown'
 	});
 
+	function helloFunction(name) {
+		console.info("Hello", this.your_name, "from", name);
+	}
+
+
     console.debug("Worker:", work);
 
-    setTimeout(function() {
-    	work.sayHello("Jochen").then(function(result) {
-    		console.log("RESULT:", result);
+    work.your_name = "Genius";
+    //work.changeNameTo("Jochen").then(function() {
+		console.log("Your Name is:", work.your_name);
+		work.sayHello("Someone").catch(function (error) {
+			console.error("ERROR:", error);
 		});
-	}, 2000);
+	//}).catch(function (error) { console.error("ERROR:", error); });
 </script>
 </body>
 </html>

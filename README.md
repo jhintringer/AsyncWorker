@@ -3,32 +3,32 @@ A Worker Library for JavaScript to simplify the communication process.
 
 ## Example
 
-Add the **aworker_lib.js** Script to your document and initialize the Worker like this:
+Add the **worker_lib.js** Script to your document and initialize the Worker like this:
 ```javascript
 // Initialize Worker with Properties and Functions
 let work = new AsyncWorker({
-	sayHello: helloFunction,
-	changeNameTo: function(newName) {
-		this.your_name = newName;
-		return true; // Return Values are always passed to the Promise's Resolve
-	},
-	your_name: 'unknown'
+    sayHello: helloFunction,
+    changeNameTo: function(newName) {
+        this.your_name = newName;
+        return true; // Return Values are always passed to the Promise's Resolve
+    },
+    your_name: 'unknown'
 });
 
 function helloFunction(name) {
-	console.info("Hello", this.your_name, "from", name);
+    console.info('Hello', this.your_name, 'from', name);
 }
 
 // Changing Properties:
-work.your_name = "Genius"
+work.your_name = 'Genius';
 
 // Calling Functions:;
-work.sayHello("Script");
+work.sayHello('Script');
 
-work.changeNameTo("Jochen").then(function() {
-	console.log("Your Name is:", work.your_name);
-	
-	work.sayHello("Someone");
+work.changeNameTo('John Doe').then(function() {
+    console.log('Your Name is:', work.your_name);
+
+    work.sayHello('Someone');
 });
 ```
 

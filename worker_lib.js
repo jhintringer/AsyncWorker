@@ -130,7 +130,7 @@ self.AsyncWorker = function(controller, name) {
 		lines = string.split('}');
 		lines.pop();
 		string = lines.join('}');
-		return string;
+		return string.trim();
 	}
 	function getFunctionArguments(fn) {
 		let string = fn.toString();
